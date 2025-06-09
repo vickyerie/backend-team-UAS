@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('account_id')->constrained()->onDelete('cascade');
+            $table->string('tujuan');
+            $table->decimal('nominal', 15, 2);
+            $table->string('jenis_tagihan');
+            $table->timestamp('tanggal')->useCurrent();
             $table->timestamps();
         });
     }
